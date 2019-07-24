@@ -1,5 +1,8 @@
-# Asynchronous Processing: Callbacks
-In this Section we'll look at Asynchronous Processing using Callbacks.
+# HCA2
+## MEAN Stack
+### Asynchronous Processing: Promises
+
+In this Section we'll look at Asynchronous Processing using Promises.
 
 ### Setup (app.js)
 - Replace YOUR_API_KEY in the apiKey const below with your GMaps API Key

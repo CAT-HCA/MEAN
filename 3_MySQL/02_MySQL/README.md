@@ -1,6 +1,6 @@
 # HCA2
 ## MEAN Stack
-### Express
+### MySQL: promise-mysql
 
 Note that this Demo assumes you have a local MySQL installation and that you know how to create a new DB User. 
 
