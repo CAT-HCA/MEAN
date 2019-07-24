@@ -6,6 +6,7 @@ Note: We will be using MySQL in place of [MongoDB](https://www.mongodb.com/) for
 
 
 ## Useful links
+* [w3schools](https://www.w3schools.com)
 * [MySQL](https://www.mysql.com/)
 * [MySQL Workbench](https://www.mysql.com/products/workbench/)
 * [mysql2 npm](https://www.npmjs.com/package/mysql2)
