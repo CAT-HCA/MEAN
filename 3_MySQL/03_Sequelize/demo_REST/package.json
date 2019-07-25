@@ -1,0 +1,18 @@
+{
+    "name": "demo_rest",
+    "version": "1.0.0",
+    "description": "Note that this Demo assumes you have a local MySQL installation and that you know how to create a new DB User.",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon ./bin/www",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "mysql2": "^1.6.5",
+        "sequelize": "^5.10.2"
+    }
+}
