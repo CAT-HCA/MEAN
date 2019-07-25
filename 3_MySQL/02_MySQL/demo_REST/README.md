@@ -31,7 +31,7 @@ $ node server
 ```
 
 
-### Test in Postman (POST)
+### Test in Postman (See Postman Collection)
 + Set Headers Content-Type = application/x-www-form-urlencoded
 + Set Body as follows
 
@@ -39,7 +39,7 @@ $ node server
 
 + Click Send
 
-![Postman](img/results.png?raw=true "Postman")
+![Results](img/results.png?raw=true "Results")
 
 
 
