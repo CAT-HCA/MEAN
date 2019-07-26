@@ -5,17 +5,17 @@ module.exports = {
     getDbConnection: function(callback, req, res) {
         mysql.createConnection({
             connectionLimit: config.connectionLimit,
-            host: config.host,
-            user: config.user,
-            password: config.password,
-            database: config.db,
+            host: `${process.env.DB_HOST}`,
+            user: `${process.env.DB_USER}`,
+            password: `${process.env.DB_USER_PWD}`,
+            database: `${process.env.DB_NAME}`,
             debug: config.debug
-        }).then(function(conn){
+        }).then(function(conn) {
             callback(conn, req, res);
-        }).catch(function(error){
+        }).catch(function(error) {
             console.log('Error establishing DB connection!');
             console.log(error);
-            res.json({'success' : false});
+            res.json({ 'success': false });
         });
     },
     closeDbConnection: function(con) {

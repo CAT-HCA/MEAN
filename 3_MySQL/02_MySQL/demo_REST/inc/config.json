@@ -1,8 +1,4 @@
 {
-    "host": "localhost",
-    "user": "hca",
-    "password": "password",
-    "db": "demo",
     "connectionLimit": 100,
     "debug": false
 }

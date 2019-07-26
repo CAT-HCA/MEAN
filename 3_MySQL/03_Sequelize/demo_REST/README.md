@@ -12,6 +12,11 @@ This example assumes a MySQL User with the following
 ## Setup
 + Create MySQL DB User as defined above
 + Execute sql/create.sql in MySQL to build the DB
++ Create .env file containing the following
+
+DB_DATABASE=demo
+DB_USERNAME=hca
+DB_PASSWORD=password
 
 + Create a working dir and run ```npm init```
 + See code in demo
@@ -19,7 +24,7 @@ This example assumes a MySQL User with the following
 
 ## Install Modules
 ```
-$ npm install express body-parser mysql2 sequelize --save
+$ npm install express body-parser mysql2 sequelize dotenv --save
 ```
 
 ### Launch App
