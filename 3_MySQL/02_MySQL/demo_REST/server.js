@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -30,12 +32,10 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-    res.json(
-        {
-            'success' : false,
-            'msg'     : `${err.status}: ${err.message}.`
-        }
-    );
+    res.json({
+        'success': false,
+        'msg': `${err.status}: ${err.message}.`
+    });
 });
 
 app.listen(PORT, () => {

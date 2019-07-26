@@ -16,11 +16,19 @@ This example assumes a MySQL User with the following
 ![MySQL Workbench](img/mysql_workbench.png?raw=true "MySQL Workbench")
 
 + Create a working dir and run ```npm init```
++ Create .env file containing the following
+
+DB_HOST=localhost
+DB_NAME=demo
+DB_USER=hca
+DB_USER_PWD=password
+
+
 + See code in demo
 
 ## Install Modules
 ```
-$ npm install express body-parser mysql promise-mysql --save
+$ npm install express body-parser mysql promise-mysql dotenv --save
 ```
 
 ### Launch App

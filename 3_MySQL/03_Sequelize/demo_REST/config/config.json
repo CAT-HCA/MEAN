@@ -1,24 +1,15 @@
 {
     "development": {
-        "username": "hca",
-        "password": "password",
-        "database": "demo",
         "host": "localhost",
         "dialect": "mysql",
         "operatorsAliases": false
     },
     "test": {
-        "username": "hca",
-        "password": "password",
-        "database": "demo",
         "host": "localhost",
         "dialect": "mysql",
         "operatorsAliases": false
     },
     "production": {
-        "username": "hca",
-        "password": "password",
-        "database": "demo",
         "host": "localhost",
         "dialect": "mysql",
         "operatorsAliases": false
