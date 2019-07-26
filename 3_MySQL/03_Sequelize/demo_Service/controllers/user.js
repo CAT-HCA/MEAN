@@ -66,7 +66,7 @@ UserController.update = (req, res) => {
 
 // DELETE: http://localhost:3000/users/{user_id} 
 UserController.delete = (req, res) => {
-    userService.delete(req.params.mountain_id)
+    userService.delete(req.params.user_id)
         .then((user) => {
             res.json(user);
         })
