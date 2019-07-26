@@ -22,8 +22,9 @@ UserController.list = (req, res) => {
 // POST: http://localhost:3000/users/register/
 UserController.register = (req, res) => {
     userService.register({
-            user_name: req.body.user_name,
-            password: req.body.user_password
+            user_name: req.body.userName,
+            email: req.body.email,
+            is_admin: req.body.isAdmin
         })
         .then((user) => {
             res.json(user);
@@ -34,26 +35,13 @@ UserController.register = (req, res) => {
         });
 };
 
-// POST: http://localhost:3000/users/login/
-UserController.login = (req, res) => {
-    userService.login({
-            user_name: req.body.user_name,
-            password: req.body.user_password
-        })
-        .then((user) => {
-            res.json(user);
-        })
-        .catch((err) => {
-            console.log(`Reading User error: ${err}`);
-            res.end('Reading User error.');
-        });
-};
-
 // PUT: http://localhost:3000/users/
 UserController.update = (req, res) => {
     userService.update({
-            user_name: req.body.user_name,
-            password: req.body.user_password
+            id: req.body.id,
+            userName: req.body.userName,
+            email: req.body.email,
+            is_admin: req.body.isAdmin
         })
         .then((user) => {
             res.json(user);

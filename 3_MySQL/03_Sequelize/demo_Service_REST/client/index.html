@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 
+      Validated at: https://validator.w3.org/nu/ 
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Users</title>
+    <link rel="icon" href="img/favicon.ico" />
+
+    <!-- Include external Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- ionicons -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Users</a>
+    </nav>
+
+    <main class="container">
+        <!-- Input Form -->
+        <section id="inputFormSection">
+            <h1>Add A User</h1>
+
+            <!-- Form will not perform default submit, so no action or method attributes required -->
+            <form id="userForm">
+                <!-- Input fields: no required attribute as validation will be via JavaScript -->
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter User Name" autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address" />
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="isAdmin" name="isAdmin" />
+                    <label for="isAdmin">Admin</label>
+                </div>
+
+                <!-- Form buttons -->
+                <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                <button type="reset" class="btn btn-secondary" id="resetBtn">resetBtn</button>
+                <button type="button" class="btn btn-primary hidden" id="editBtn">Edit</button>
+                <button type="button" class="btn btn-secondary hidden" id="cancelBtn">Cancel</button>
+            </form>
+        </section>
+
+        <!-- Dynamic Error messages -->
+        <section class="alert alert-danger hidden" role="alert" id="alertSection">
+            <span id="msg">&nbsp;</span>
+        </section>
+
+        <!-- Output / Display -->
+        <section class="container">
+            <div id="usersDiv">
+                <hr />
+
+                <h2>Users</h2>
+
+                <!-- UL to hold dynamically genereated LI DOM Elements -->
+                <ul class="list-group" id="usersList"></ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">&copy; 2019</span>
+        </div>
+    </footer>
+
+    <!-- 
+      Include external Scripts:
+      jQuery first, then Popper.js, then Bootstrap JS 
+    -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- required by utils.js and scripts.js -->
+    <script src="js/user.js"></script>
+    <!-- required by scripts.js -->
+    <script src="js/utils.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
