@@ -1,0 +1,16 @@
+drop database DEMO;
+create database DEMO;
+use DEMO;
+
+create table USERS (
+	ID		 	int(10) NOT NULL AUTO_INCREMENT, 
+	USER_NAME 	varchar(255) NOT NULL, 
+	PASSWORD 	varchar(255) NOT NULL, 
+	IS_ADMIN	smallint(1) NOT NULL DEFAULT 0,
+	createdAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updatedAt  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UNIQUE		UQ_USER_1 (USER_NAME),
+	PRIMARY KEY(ID)
+);
+
+select * from users;
