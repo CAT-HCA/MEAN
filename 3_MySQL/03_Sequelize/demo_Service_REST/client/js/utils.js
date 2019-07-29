@@ -18,9 +18,6 @@
  * @param usersList  - HTML <ul> Element to append dynamically created <li> Elements
  */
 function displayUsers(users, usersList) {
-    // Clear current ListItems
-    usersList.innerHTML = '';
-
     // Traverse User Object Literals in users Array and display on page
     for (var indx = 0; indx < users.length; indx++) {
         // get current User from Array
@@ -72,17 +69,9 @@ function displayUsers(users, usersList) {
  
  */
 function persistUser(userForm, userObj, users, usersList) {
-    console.log(userObj);
     $.post("http://localhost:3000/users/register", userObj, function() {})
         .done(function(user) {
-            // Create a new User and push it to the users Array
-            // The user() User function is in user.js
-            users.push(new User(user.id, userObj.userName, userObj.email, userObj.isAdmin));
-
-            // Display Users on page
-            // displayUsers() function is in user.js
-            displayUsers(users, usersList);
-
+            loadPersistedUsers(users, usersList);
             userForm.reset();
         })
         .fail(function(e) {
@@ -102,19 +91,13 @@ function persistUser(userForm, userObj, users, usersList) {
  
  */
 function updateUser(userForm, userObj, users, usersList) {
-    console.log(userObj);
     $.ajax({
         type: 'PUT',
         url: 'http://localhost:3000/users/',
         data: JSON.stringify(userObj),
-        success: (user) => {
-            // Delete existing User
-            // deleteUser() function is in utils.js
-            users = deleteUser(userObj.id, users, usersList);
-
-            // Save new user
-            submitBtn.click();
-            toggleButtons(); // utils.js
+        success: () => {
+            loadPersistedUsers(users, usersList, true);
+            toggleButtons();
             userForm.reset();
         },
         fail: () => {
@@ -133,22 +116,19 @@ function updateUser(userForm, userObj, users, usersList) {
  * @param id        - Id of User to delete
  * @param users     -  Array of User Objects
  * @param usersList - HTML UL Element to append dynamically created LI Elements to
- *
- * @return filteredUsers - New users Array without deleted User
  */
 function deleteUser(id, users, usersList) {
-    // Filter out selected User to delete
-    var filteredUsers = users.filter((user) => {
-        return user.getId() != id;
+    $.ajax({
+        type: 'DELETE',
+        url: `http://localhost:3000/users/${id}`,
+        data: JSON.stringify(),
+        success: () => {
+            loadPersistedUsers(users, usersList);
+        },
+        contentType: "application/json",
+        dataType: 'json'
     });
-
-    // Display remaining users on page
-    displayUsers(filteredUsers, usersList);
-
-    // Return new Array
-    return filteredUsers;
 }
-
 
 /*
  * Function to load existing Users from DB
@@ -156,12 +136,16 @@ function deleteUser(id, users, usersList) {
  * @param usersList      - HTML UL Element to append dynamically created LI Elements to
  */
 function loadPersistedUsers(users, usersList) {
+    // clear existing list of Users
+    usersList.innerHTML = '';
+
     // try and get item from DB
     $.getJSON('http://localhost:3000/users/', function() {})
         .done(function(pseristedUsers) {
-            //console.log(pseristedUsers);
-
             if (pseristedUsers.length > 0) {
+                // clear existing users form Array - will reload from DB
+                users = [];
+
                 // loop through persisted Users
                 for (var indx = 0; indx < pseristedUsers.length; indx++) {
                     // get current Object in Array
@@ -178,7 +162,7 @@ function loadPersistedUsers(users, usersList) {
         })
         .fail(function() {
             $('#msg').html('Error getting Users form DB.');
-            $('#msg').show();
+            $('#alertSection').show();
         });
 }
 

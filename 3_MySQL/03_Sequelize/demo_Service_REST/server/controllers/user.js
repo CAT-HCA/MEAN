@@ -39,7 +39,7 @@ UserController.register = (req, res) => {
 UserController.update = (req, res) => {
     userService.update({
             id: req.body.id,
-            userName: req.body.userName,
+            user_name: req.body.userName,
             email: req.body.email,
             is_admin: req.body.isAdmin
         })
