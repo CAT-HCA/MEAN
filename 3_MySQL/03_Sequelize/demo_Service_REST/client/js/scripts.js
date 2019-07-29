@@ -108,24 +108,24 @@ $(document).ready(function() {
         // check to see if it was edit or delete btn (or another element - skip)
         if (value && (className.indexOf('btn-info') > 0) || className.indexOf('btn-danger') > 0) {
             if (target.innerText == 'Edit') {
+                userToDelete = value;
+
                 // Filter out selected User to edit
                 var filteredUser = users.filter((user) => {
-                    userToDelete = value;
+                    //userToDelete = value;
                     return user.getId() == value;
                 });
 
                 // Populate Form with User data - first (only) Element in filteredUser Array
                 userName.value = filteredUser[0].userName;
                 email.value = filteredUser[0].email;
-                isAdmin.value = filteredUser[0].isAdmin;
+                isAdmin.checked = filteredUser[0].isAdmin;
 
                 toggleButtons(); // utils.js
                 userName.focus();
             } else { // Delete
                 // deleteUser() function is in utils.js
-                users = deleteUser(value, users, usersList);
-
-                // Persist Users???
+                deleteUser(value, users, usersList);
             }
         } // else skip element
     });
