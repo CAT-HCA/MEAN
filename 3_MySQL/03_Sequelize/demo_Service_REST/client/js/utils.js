@@ -14,10 +14,12 @@
  * This function displays Users on the page
  * it is called from yserForm.submit() in scripts.js and deleteuser() below
  *
- * @param users      - Array of User Objects
  * @param usersList  - HTML <ul> Element to append dynamically created <li> Elements
  */
-function displayUsers(users, usersList) {
+function displayUsers(usersList) {
+    // clear existing list of Users
+    usersList.innerHTML = '';
+
     // Traverse User Object Literals in users Array and display on page
     for (var indx = 0; indx < users.length; indx++) {
         // get current User from Array
@@ -64,14 +66,14 @@ function displayUsers(users, usersList) {
  *
  * @param userForm
  * @param userObj   - Object with User data to be persisted
- * @param users     -  Array of User Objects
  * @param usersList - HTML UL Element to append dynamically created LI Elements to
  
  */
-function persistUser(userForm, userObj, users, usersList) {
+function persistUser(userForm, userObj, usersList) {
     $.post("http://localhost:3000/users/register", userObj, function() {})
         .done(function(user) {
-            loadPersistedUsers(users, usersList);
+            users.push(new User(user.id, userObj.userName, userObj.email, userObj.isAdmin));
+            displayUsers(usersList);
             userForm.reset();
         })
         .fail(function(e) {
@@ -86,17 +88,20 @@ function persistUser(userForm, userObj, users, usersList) {
  *
  * @param userForm
  * @param userObj   - Object with User data to be persisted
- * @param users     -  Array of User Objects
  * @param usersList - HTML UL Element to append dynamically created LI Elements to
  
  */
-function updateUser(userForm, userObj, users, usersList) {
+function updateUser(userForm, userObj, usersList) {
     $.ajax({
         type: 'PUT',
         url: 'http://localhost:3000/users/',
         data: JSON.stringify(userObj),
         success: () => {
-            loadPersistedUsers(users, usersList, true);
+            deleteUserFromPage(userObj.id, usersList);
+
+            users.push(new User(userObj.id, userObj.userName, userObj.email, userObj.isAdmin));
+            displayUsers(usersList);
+
             toggleButtons();
             userForm.reset();
         },
@@ -109,21 +114,33 @@ function updateUser(userForm, userObj, users, usersList) {
     });
 }
 
+
+function deleteUserFromPage(id, usersList) {
+    var filteredUsers = users.filter((user) => {
+        return user.getId() != id;
+    });
+
+    // Set new Array
+    users = filteredUsers;
+
+    // Display remaining Users on page
+    displayUsers(usersList);
+}
+
 /*
  * Function to delete a User and return a new Array of users
  * it is called from document 'click' EventListener and editBtn.click() in scripts.js
  *
  * @param id        - Id of User to delete
- * @param users     -  Array of User Objects
  * @param usersList - HTML UL Element to append dynamically created LI Elements to
  */
-function deleteUser(id, users, usersList) {
+function deleteUser(id, usersList) {
     $.ajax({
         type: 'DELETE',
         url: `http://localhost:3000/users/${id}`,
         data: JSON.stringify(),
         success: () => {
-            loadPersistedUsers(users, usersList);
+            deleteUserFromPage(id, usersList);
         },
         contentType: "application/json",
         dataType: 'json'
@@ -132,20 +149,13 @@ function deleteUser(id, users, usersList) {
 
 /*
  * Function to load existing Users from DB
- * @param users          - Array of User Objects
  * @param usersList      - HTML UL Element to append dynamically created LI Elements to
  */
-function loadPersistedUsers(users, usersList) {
-    // clear existing list of Users
-    usersList.innerHTML = '';
-
+function loadPersistedUsers(usersList) {
     // try and get item from DB
     $.getJSON('http://localhost:3000/users/', function() {})
         .done(function(pseristedUsers) {
             if (pseristedUsers.length > 0) {
-                // clear existing users form Array - will reload from DB
-                users = [];
-
                 // loop through persisted Users
                 for (var indx = 0; indx < pseristedUsers.length; indx++) {
                     // get current Object in Array
@@ -157,7 +167,7 @@ function loadPersistedUsers(users, usersList) {
                 }
 
                 // Display users
-                displayUsers(users, usersList);
+                displayUsers(usersList);
             } // else no persisted users found
         })
         .fail(function() {
@@ -175,4 +185,4 @@ function toggleButtons() {
     $('#resetBtn').toggle();
     $('#editBtn').toggle();
     $('#cancelBtn').toggle();
-}
+};

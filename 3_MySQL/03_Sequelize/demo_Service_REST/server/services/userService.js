@@ -27,7 +27,7 @@ userService.register = (userObj) => {
 };
 
 userService.update = (userObj) => {
-    return User.update({ user_name: userObj.userName, email: userObj.email, is_admin: userObj.isAdmin }, { where: { id: userObj.id } })
+    return User.update({ user_name: userObj.user_name, email: userObj.email, is_admin: userObj.is_admin }, { where: { id: userObj.id } })
         .then(user => {
             return user;
         })
