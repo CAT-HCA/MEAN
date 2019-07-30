@@ -9,6 +9,11 @@
 // Force Strict Mode
 "use strict";
 
+// GLOBAL Array to hold User Objects (Objects)
+var users = [];
+// GLOBAL Var to hold User to delete when editing
+var userToDelete = '';
+
 /*
  * Function to validate User Input and return vaildity
  *
@@ -43,7 +48,6 @@ $(document).ready(function() {
     var userName = document.getElementById('userName');
     var email = document.getElementById('email');
     var isAdmin = document.getElementById('isAdmin');
-    var submitBtn = document.getElementById('submitBtn');
     var editBtn = document.getElementById('editBtn');
     var cancelBtn = document.getElementById('cancelBtn');
 
@@ -51,12 +55,6 @@ $(document).ready(function() {
     var msg = document.getElementById('msg');
     // <ul> element to hold dynamically created <li> elements
     var usersList = document.getElementById('usersList');
-
-    // Array to hold User Objects (Objects)
-    var users = [];
-
-    // Var to hold User to delete when editing
-    var userToDelete = '';
 
     // Bind Submit Event Listener to userForm
     userForm.addEventListener('submit', function(evt) {
@@ -68,7 +66,7 @@ $(document).ready(function() {
             var isAdminSelected = isAdmin.checked ? 1 : 0;
             var userObj = { userName: userName.value, email: email.value, isAdmin: isAdminSelected };
             // call funct to persist to DB
-            persistUser(this, userObj, users, usersList);
+            persistUser(this, userObj, usersList);
         } else {
             // invalid data, so show alert
             alertSection.classList.remove('hidden');
@@ -90,7 +88,7 @@ $(document).ready(function() {
         var isAdminSelected = isAdmin.checked ? 1 : 0;
         var userObj = { id: parseInt(userToDelete), userName: userName.value, email: email.value, isAdmin: isAdminSelected };
         // call funct to update in DB
-        updateUser(userForm, userObj, users, usersList);
+        updateUser(userForm, userObj, usersList);
     });
 
     // Cancel Button (on edit form) Click Event
@@ -108,11 +106,9 @@ $(document).ready(function() {
         // check to see if it was edit or delete btn (or another element - skip)
         if (value && (className.indexOf('btn-info') > 0) || className.indexOf('btn-danger') > 0) {
             if (target.innerText == 'Edit') {
-                userToDelete = value;
-
                 // Filter out selected User to edit
                 var filteredUser = users.filter((user) => {
-                    //userToDelete = value;
+                    userToDelete = value;
                     return user.getId() == value;
                 });
 
@@ -125,11 +121,11 @@ $(document).ready(function() {
                 userName.focus();
             } else { // Delete
                 // deleteUser() function is in utils.js
-                deleteUser(value, users, usersList);
+                deleteUser(value, usersList);
             }
         } // else skip element
     });
 
     // Call function (in utils.js) to get Users from DB
-    loadPersistedUsers(users, usersList);
+    loadPersistedUsers(usersList);
 });
