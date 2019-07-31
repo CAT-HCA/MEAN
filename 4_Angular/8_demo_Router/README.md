@@ -162,4 +162,4 @@ userName: string = '';
 The UseName and a Logout button are now displayed on the Mountains page.
 
 
-![AngularJS](img/img_4.png?raw=true "AngularJS")
+![Angular](img/img_4.png?raw=true "Angular")
