@@ -1,7 +1,7 @@
 # Angular Services
 
 ## Create App
-Start with App created in Section [5_demo_Components](https://github.com/RMF-HCA2/MEAN/tree/master/4_Angular/5_demo_Components).
+Start with App created in Section [5_demo_Components](https://github.com/RMF-HCA2/MEAN/tree/master/5_Angular/5_demo_Components).
 
 ## Generate a Login Service
 + Execute the following in a Terminal in the root dir of your Project

@@ -1,7 +1,7 @@
 # Angular Router
 
 ## Create App
-Start with App created in Section [7_demo_Services](https://github.com/RMF-HCA2/MEAN/tree/master/4_Angular/7_demo_Services).
+Start with App created in Section [7_demo_Services](https://github.com/RMF-HCA2/MEAN/tree/master/5_Angular/7_demo_Services).
 
 ## Modify App
 

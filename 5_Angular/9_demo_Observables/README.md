@@ -1,6 +1,6 @@
 # Angular Observables
 
-Although we already saw an example of an observable in mountain.component.ts in the [Angular Routing Section](https://github.com/RMF-HCA2/MEAN/tree/master/4_Angular/8_demo_Router), we'll take a deeper dive here, including connecting to a Node Server to get data!
+Although we already saw an example of an observable in mountain.component.ts in the [Angular Routing Section](https://github.com/RMF-HCA2/MEAN/tree/master/5_Angular/8_demo_Router), we'll take a deeper dive here, including connecting to a Node Server to get data!
 
 ## For Reference
 ### mountain.component.ts

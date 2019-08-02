@@ -1,7 +1,7 @@
 # Angular Event Binding
 
 ## Create App
-Start with App created in Section [2_demo_Event_Binding](https://github.com/RMF-HCA2/MEAN/tree/master/4_Angular/2_demo_Event_Binding).
+Start with App created in Section [2_demo_Event_Binding](https://github.com/RMF-HCA2/MEAN/tree/master/5_Angular/2_demo_Event_Binding).
 
 
 ## Load App

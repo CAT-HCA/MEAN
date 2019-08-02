@@ -14,7 +14,7 @@ ng --version
 ## Create a new Angular App
 ```
 $ ng new demo
-  C:\Users\Training\development\HCA2\MEAN\4_Angular>ng new demo
+  C:\Users\Training\development\HCA2\MEAN\5_Angular>ng new demo
     ? Would you like to add Angular routing? No
     ? Which stylesheet format would you like to use? CSS
     CREATE demo/angular.json (3409 bytes)
