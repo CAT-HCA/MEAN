@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "457d54b6-63b0-41ca-b8bf-2545e74008cc",
+		"name": "PostgreSQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Manufacturers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/inventory/manufacturers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"manufacturers"
+					]
+				},
+				"description": "Get all Manufacturers"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automobiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/inventory/automobiles/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"automobiles",
+						""
+					]
+				},
+				"description": "Get all Automobiles"
+			},
+			"response": []
+		}
+	]
+}
