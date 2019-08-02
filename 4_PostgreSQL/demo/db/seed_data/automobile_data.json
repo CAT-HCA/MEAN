@@ -1,0 +1,49 @@
+[{
+        "MODEL": "MODEL S",
+        "YEAR": "2014",
+        "MSRP": "38,500",
+        "MANUFACTURERID": 1
+    },
+    {
+        "MODEL": "MODEL S",
+        "YEAR": "2019",
+        "MSRP": "81,500",
+        "MANUFACTURERID": 1
+    },
+    {
+        "MODEL": "MODEL 3",
+        "YEAR": "2019",
+        "MSRP": "45,000",
+        "MANUFACTURERID": 1
+    },
+    {
+        "MODEL": "MODEL X",
+        "YEAR": "2016",
+        "MSRP": "64,500",
+        "MANUFACTURERID": 1
+    },
+    {
+        "MODEL": "MODEL X",
+        "YEAR": "2019",
+        "MSRP": "82,500",
+        "MANUFACTURERID": 1
+    },
+    {
+        "MODEL": "718",
+        "YEAR": "2019",
+        "MSRP": "56,900",
+        "MANUFACTURERID": 2
+    },
+    {
+        "MODEL": "911",
+        "YEAR": "2019",
+        "MSRP": "97,400",
+        "MANUFACTURERID": 2
+    },
+    {
+        "MODEL": "Cayman",
+        "YEAR": "2019",
+        "MSRP": "86,300",
+        "MANUFACTURERID": 2
+    }
+]
