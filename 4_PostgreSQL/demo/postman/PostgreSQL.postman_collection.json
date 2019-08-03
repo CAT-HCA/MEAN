@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "457d54b6-63b0-41ca-b8bf-2545e74008cc",
+		"_postman_id": "fe2a81a0-0578-4763-859f-16aed46d090f",
 		"name": "PostgreSQL",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -45,6 +45,205 @@
 					]
 				},
 				"description": "Get all Automobiles"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Manufacturer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/inventory/manufacturers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"manufacturers",
+						"1"
+					]
+				},
+				"description": "Get a single Manufacturer by primary key (id)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Automobiles for Manufacturer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/inventory/automobiles/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"automobiles",
+						"2"
+					]
+				},
+				"description": "Get all Automobiles for a specific Manufacturer"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Manufacturer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "manufacturerName",
+							"value": "BMW",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/inventory/manufacturers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"manufacturers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an Automobile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "autoModel",
+							"value": "X1",
+							"type": "text"
+						},
+						{
+							"key": "autoYear",
+							"value": "2019",
+							"type": "text"
+						},
+						{
+							"key": "autoMSRP",
+							"value": "34,950",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/inventory/automobiles/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"automobiles",
+						"3"
+					]
+				},
+				"description": "Create an Automobile for a specific Manufacturer"
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Automobile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "autoModel",
+							"value": "i3",
+							"type": "text"
+						},
+						{
+							"key": "autoYear",
+							"value": "2019",
+							"type": "text"
+						},
+						{
+							"key": "autoMSRP",
+							"value": "44,450",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/inventory/automobiles/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"automobiles",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Automobile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/inventory/automobiles/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"inventory",
+						"automobiles",
+						"9"
+					]
+				}
 			},
 			"response": []
 		}
