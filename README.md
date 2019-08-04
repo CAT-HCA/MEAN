@@ -7,7 +7,10 @@
 * [w3schools](https://www.w3schools.com)
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
+* [Postman](https://www.getpostman.com)
 * [MySQL](https://www.mysql.com/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Sequelize](http://docs.sequelizejs.com/)
 * [Angular](https://angular.io/)
 
 Note: We will be using MySQL in place of [MongoDB](https://www.mongodb.com/) for our Database. 
