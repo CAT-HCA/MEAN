@@ -25,7 +25,7 @@ See demo code.
 ## Migrate DB
 ```
 $ cd server\db
-$ db migrate
+$ node migrate
 ```
 
 
