@@ -46,13 +46,15 @@ export class RegisterComponent implements OnInit {
       this.error = false;
       this.errMsg = '';
 
-      // Call UserService to authenticate
-      if (this.userService.register(this.userName, this.email, this.password)) {
-        this.router.navigate(['login']);
-      } else {
-        this.errMsg = 'Registration unsuccessful.';
-        this.error = true;
-      }
+      // Call UserService to Register
+      this.userService.register(this.userName, this.email, this.password).subscribe(data => {
+        if (data['error']) {
+          this.errMsg = 'Registration unsuccessful.';
+          this.error = true;
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
     }
   }
 

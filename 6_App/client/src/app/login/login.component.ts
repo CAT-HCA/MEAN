@@ -33,12 +33,14 @@ export class LoginComponent implements OnInit {
       this.errMsg = '';
 
       // Call UserService to authenticate
-      if (this.userService.login(this.userName, this.password)) {
-        this.router.navigate(['manager']);
-      } else {
-        this.errMsg = 'Login unsuccessful.';
-        this.error = true;
-      }
+      this.userService.login(this.userName, this.password).subscribe(data => {
+        if (data['error']) {
+          this.errMsg = 'Login unsuccessful.';
+          this.error = true;
+        } else {
+          this.router.navigate(['manager']);
+        }
+      });
     }
   }
 
