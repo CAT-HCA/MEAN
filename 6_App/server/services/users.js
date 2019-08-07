@@ -22,6 +22,22 @@ Service.listUser = (userId) => {
         })
 };
 
+
+Service.login = (req) => {
+    let userName = req.body.userName;
+    let userPassword = req.body.userPassword;
+    return User.findOne({
+            where: { USER_NAME: userName, PASSWORD: userPassword }
+        })
+        .then(user => {
+            return user;
+        })
+        .catch(error => {
+            throw error;
+        })
+};
+
+
 Service.createUser = (userObj) => {
     return User.create(userObj)
         .then(user => {
