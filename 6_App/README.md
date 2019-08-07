@@ -45,6 +45,11 @@ $ npm start
 ```
 
 
+## Test Server
+- Use Postman Collection
+- [HBS](http://localhost:3000/)
+
+
 ## Serve Client
 ```
 $ cd client
@@ -53,8 +58,8 @@ $ ng serve
 ```
 
 
-## Load App
-[http://localhost:4200/](http://localhost:4200/)
+## Test Client
+- [Angular](http://localhost:4200/)
 
 
 ## Useful links
