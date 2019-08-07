@@ -29,14 +29,6 @@ $ node migrate
 ```
 
 
-## Create a new Angular App
-```
-$ ng new client
-```
-
-See demo code.
-
-
 ## Start Server
 ```
 $ cd server
@@ -48,6 +40,14 @@ $ npm start
 ## Test Server
 - Use Postman Collection
 - [HBS](http://localhost:3000/)
+
+
+## Create a new Angular App
+```
+$ ng new client
+```
+
+See demo code.
 
 
 ## Serve Client
