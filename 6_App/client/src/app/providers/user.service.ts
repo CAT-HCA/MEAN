@@ -1,42 +1,38 @@
 import { Injectable } from '@angular/core';
-
-import {User} from './../models/user.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject, of} from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  // Array to hold User Objects
-  users: User[] = [
-    new User(1, 'FooBar', 'foobar@test.com', 'password123')
-  ];
+  private usersEndpoint: string = 'http://localhost:3000/users/';
+	private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
 
-  // Hard-coded for demo purposes
-  USER_NAME: string = 'FooBar';
-  EMAIL: string = 'foobar@test.com';
-  PASSWORD: string = 'password123';
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   login(userName: string, password: string) {
-    if (userName === this.USER_NAME && password === this.PASSWORD) {
-      return  true;
-    } else {
-      return false;
-    }
+    return this.http.post(`${this.usersEndpoint}login`, {userName : userName, userPassword : password}, this.httpOptions)
+      .pipe(map(res => <any[]>res));
   }
 
   register(userName: string, email: string, password: string) {
-    console.log(`${userName}, ${email}, ${password}`);
-    if (userName === this.USER_NAME || email === this.EMAIL) {
-      return false;
-    } else {
-      this.users.push(new User(this.users.length, userName, email, password));
-      return true;
-    }
+    return this.http.post(this.usersEndpoint, {userName : userName, userEmail : email, userPassword : password}, this.httpOptions)
+      .pipe(map(res => <any[]>res));
   }
 
-  getUsers(): Array<any> {
-    return this.users;
+  deleteUser(userId: number) {
+    return this.http.delete(`${this.usersEndpoint}${userId}`, this.httpOptions)
+      .pipe(map(res => <any[]>res));
+  }
+
+  getUsers() {
+    return this.http.get(this.usersEndpoint, this.httpOptions)
+    .pipe(map(res => <any[]>res));
   }
 }
