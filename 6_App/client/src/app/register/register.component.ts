@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { UserService } from './../providers/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,10 +10,60 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   pageTitle = 'Register';
-  
-  constructor() { }
+  userName: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPass: string = '';
 
-  ngOnInit() {
+  error: boolean = false;
+  errMsg: string = '';
+  
+  // create instance of UserService
+  constructor(private userService: UserService, private router: Router) {}
+
+  ngOnInit() { }
+
+  onSubmit(): void {
+    if (this.userName == '') {
+      this.errMsg = 'User name is required.';
+      this.error = true;
+    } else if (this.email == '') {
+      this.errMsg = 'Email Address is required.';
+      this.error = true;
+    } else if (this.password == '') {
+      this.errMsg = 'Password is required.';
+      this.error = true;
+    } else if (this.password.length < 8) {
+      this.errMsg = 'Password must be at least 8 chars.';
+      this.error = true;
+    } else if (this.confirmPass == '') {
+      this.errMsg = 'Please confirm password.';
+      this.error = true;
+    } else if (this.password != this.confirmPass) {
+      this.errMsg = 'Passwords do not match';
+      this.error = true;
+    } else {
+      this.error = false;
+      this.errMsg = '';
+
+      // Call UserService to authenticate
+      if (this.userService.register(this.userName, this.email, this.password)) {
+        this.router.navigate(['login']);
+      } else {
+        this.errMsg = 'Registration unsuccessful.';
+        this.error = true;
+      }
+    }
+  }
+
+  onReset(): void {
+    this.userName = '';
+    this.email = '';
+    this.password = '';
+    this.confirmPass = '';
+
+    this.error = false;
+    this.errMsg = '';
   }
 
 }
